@@ -4,7 +4,6 @@ from copy import deepcopy
 import itertools
 
 
-
 dict={"2":["A","B","C"],
       "3":["D","E","F"],
       "4":["G","H","I"],
@@ -13,11 +12,13 @@ dict={"2":["A","B","C"],
       "7":["P","Q","R","S"],
       "8":["T","U","V"],
       "9":["W","X","Y","Z"]}
+
 vow_dict={"2":"A",
           "3":"E",
           "4":"I",
           "6":"O",
           "8":"U"}
+
 conso_dict={"2":["B","C"],
            "3":["D","F"],
            "4":["G","H"],
@@ -34,7 +35,6 @@ def find_dupes(x):
         return x[1]
     elif x[2]==x[3]:
         return x[2]
-
 
 def best_match(x):
     best_match=[]
@@ -59,7 +59,6 @@ def best_match(x):
             return(best_match)
     return("".join(sorted(best_match, key=str)))
 
-
 def check_vow_num(x):
     x=list(x)
     test=[]
@@ -68,8 +67,6 @@ def check_vow_num(x):
         if a in vow_dict.keys():
             test.append(vow_dict[a])
     return list(set(test))
-
-
 
 def matches(x):
     if len(check_vow_num(x))==0:
@@ -97,27 +94,8 @@ def matches(x):
     return final
 
 
-test=[]
-for i in range( 0 , len(gamma)):
-    final = build_output(list(gamma[i]))
-    random.shuffle(final)
-    final="".join(final)
-    if final not in test:
-        test.append(final)
-
-
-
 z = 'ABCDEFGHIJKLMOPQRSTUVWXYZ'
 z1 = [''.join(i) for i in itertools.permutations(z, 3)]
-
-
-n = '23456789'
-gamma = [''.join(i) for i in itertools.permutations(n, 3)]
-
-testd={}
-for i in range(0,len(gamma)):
-    testd.update({gamma[i]:[]})
-
 
 final=[]
 finallist=[]
@@ -144,7 +122,6 @@ for i in range(0,len(z1)):
     a=z1[i][0]
     b=z1[i][1]
     c=z1[i][2]
-
     temp=[]
     for j in range(2,10):
         if a in dict[str(j)]:
@@ -161,14 +138,19 @@ for i in range(0,len(z1)):
     else:
         dict_final[final]=[str(z1[i])]
 
+
+print("Best Match for 222 is : ")
 print(best_match("222"))
+print("Matchs for 222 are : ")
 print(matches("222"))
 
-
+print("Best Match for 223 is :")
 print(best_match("223"))
+print("Matchs for 232 are : ")
 print(matches("223"))
 
-
+print("Best Match for 777 is :")
 print(best_match("777"))
+print("Matchs for 777 are :")
 print(matches("777"))
 
